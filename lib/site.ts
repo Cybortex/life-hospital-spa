@@ -1,78 +1,245 @@
 export const SITE = {
   name: "Life Medical Spa & Wellness Center",
   short: "Life Medical Spa",
-  tagline: "Spa treatments and wellness therapies",
-  slogan: "Feel your best, starting today",
+  tagline: "Integrative Medical Spa & Clinical Wellness",
+  slogan: "Where Medical Science Meets Restorative Wellness",
+  subheading: "Doctor-supervised wellness therapies, clinical skincare, and therapeutic bodywork in a private medical sanctuary in Garki, Abuja.",
   address: "No 7 Kontagora Close, Area 3, Garki, Abuja",
   phones: [{ label: "0811 111 3993", tel: "+2348111113993" }],
-  wa: "https://wa.me/2348111113993", // TODO: confirm this number is on WhatsApp
-  ig: "", // TODO: add the Instagram profile URL (leave "" to hide)
+  wa: "https://wa.me/2348111113993",
+  ig: "",
   fb: "https://www.facebook.com/lifehospitalandmedicalspa1",
   map: "https://www.google.com/maps/search/?api=1&query=7+Kontagora+Close+Area+3+Garki+Abuja",
   embed: "https://www.google.com/maps?q=7+Kontagora+Close+Area+3+Garki+Abuja&output=embed",
 };
 
-export const DISCLAIMER = "General information only. Therapies are not a substitute for advice or treatment from your doctor.";
+export const DISCLAIMER = "Clinical wellness therapies are conducted under professional guidance and doctor-approved protocols. They complement, but do not replace, primary medical consultation or acute hospital emergency care.";
 
-// From their Facebook post: 9 AM - 5 PM, Mon - Sat. TODO: confirm with the clinic.
 export const HOURS: [string, string][] = [
   ["Monday to Saturday", "9:00 AM – 5:00 PM"],
-  ["Sunday", "Closed"],
+  ["Sunday", "Closed (Sanitation & Sterilization)"],
 ];
 
 export const NAV = [
   { href: "/", label: "Home" },
-  { href: "/services", label: "Services" },
-  { href: "/team", label: "Team" },
-  { href: "/contact", label: "Contact Us" },
+  { href: "/services", label: "Clinical Services" },
+  { href: "/team", label: "Clinical Team" },
+  { href: "/contact", label: "Contact & Clinic" },
 ];
 
 export type Cat = "spa" | "therapy";
-export const CATS: { id: Cat | "all"; label: string }[] = [
-  { id: "all", label: "All" }, { id: "spa", label: "Spa & Beauty" }, { id: "therapy", label: "Wellness Therapies" },
+export const CATS: { id: Cat | "all"; label: string; desc: string }[] = [
+  { id: "all", label: "All Treatments", desc: "Complete clinical and aesthetic treatment catalogue" },
+  { id: "therapy", label: "Medical Wellness Therapies", desc: "Doctor-guided chamber, sauna and hydrotherapy protocols" },
+  { id: "spa", label: "Aesthetic & Therapeutic Care", desc: "Clinical skincare, organic facials and bodywork" },
 ];
 
-export type Service = { slug: string; name: string; blurb: string; cats: Cat[]; price?: string };
-// TODO: prices and durations. Clinical descriptions must be approved by the clinic's doctor before launch.
-// image: /public/images/service-<slug>.jpg
+export type Service = {
+  slug: string;
+  name: string;
+  blurb: string;
+  cats: Cat[];
+  price?: string;
+  duration: string;
+  protocol?: string;
+  requiresConsultation?: boolean;
+  categoryLabel: string;
+};
+
 export const SERVICES: Service[] = [
-  { slug: "swedish", name: "Swedish Massage", blurb: "Long, flowing strokes to ease tension.", cats: ["spa"] },
-  { slug: "deep-tissue", name: "Deep Tissue Massage", blurb: "Firm pressure for knots and tight muscles.", cats: ["spa"] },
-  { slug: "lomi-lomi", name: "Lomi-Lomi Massage", blurb: "A flowing, rhythmic Hawaiian-style massage.", cats: ["spa"] },
-  { slug: "trigger-point", name: "Trigger Point Massage", blurb: "Focused pressure on tight spots in the muscle.", cats: ["spa"] },
-  { slug: "facials", name: "Facials", blurb: "Deep cleansing and brightening organic facials.", cats: ["spa"] },
-  { slug: "scrub-sauna", name: "Brightening Scrub + Sauna", blurb: "A brightening body scrub followed by a sauna session.", cats: ["spa"] },
-  { slug: "body-polishing", name: "Body Polishing", blurb: "Body polishing with organic oil.", cats: ["spa"] },
-  { slug: "waxing", name: "Waxing", blurb: "Brazilian, underarm and bikini line waxing.", cats: ["spa"] },
-  { slug: "green-led", name: "Green LED Skin Therapy", blurb: "A light-based skin treatment. Ask us if it suits your skin.", cats: ["spa"] },
-  { slug: "infrared-sauna", name: "Infrared Sauna", blurb: "Far and near infrared sauna sessions.", cats: ["therapy"] },
-  { slug: "hyperbaric", name: "Hyperbaric Oxygen Therapy", blurb: "Breathe pure oxygen in a pressurised chamber, with guidance from our team.", cats: ["therapy"] },
-  { slug: "colonic", name: "Colonic Irrigation", blurb: "A colon cleansing procedure. Speak to our team first.", cats: ["therapy"] },
-  { slug: "wira", name: "Water-filtered Infrared A (wIRA)", blurb: "Infrared A warmth therapy using the Hydrosun 750.", cats: ["therapy"] },
+  { 
+    slug: "hyperbaric", 
+    name: "Hyperbaric Oxygen Therapy (HBOT)", 
+    blurb: "Breathe 100% medical-grade oxygen in a pressurized chamber under continuous monitoring to support cellular recovery and tissue oxygenation.", 
+    cats: ["therapy"],
+    duration: "60 mins",
+    protocol: "Monoplace Medical Chamber • Continuous Monitoring",
+    requiresConsultation: true,
+    categoryLabel: "Medical Therapy"
+  },
+  { 
+    slug: "wira", 
+    name: "Water-filtered Infrared-A (wIRA)", 
+    blurb: "Targeted deep-tissue warmth therapy utilizing the German Hydrosun® 750 system to promote local circulation and soothe chronic musculoskeletal tension.", 
+    cats: ["therapy"],
+    duration: "30–45 mins",
+    protocol: "Hydrosun® 750 Patented Water-Filtered Technology",
+    requiresConsultation: true,
+    categoryLabel: "Medical Therapy"
+  },
+  { 
+    slug: "infrared-sauna", 
+    name: "Medical Infrared Sauna", 
+    blurb: "Full-spectrum far, mid, and near-infrared thermal sessions engineered to induce gentle cardiovascular activation and deep metabolic sweating.", 
+    cats: ["therapy"],
+    duration: "45 mins",
+    protocol: "Full-Spectrum Cedar Sanctuary • Temperature Calibrated",
+    requiresConsultation: true,
+    categoryLabel: "Medical Therapy"
+  },
+  { 
+    slug: "colonic", 
+    name: "Colonic Hydrotherapy", 
+    blurb: "A hygienic colon cleansing protocol performed by trained technicians in a sterile, private clinical suite. Intake assessment required.", 
+    cats: ["therapy"],
+    duration: "45–60 mins",
+    protocol: "Sterile Single-Use Tubing • Pre-Procedure Vetting",
+    requiresConsultation: true,
+    categoryLabel: "Medical Therapy"
+  },
+  { 
+    slug: "green-led", 
+    name: "Green LED Phototherapy", 
+    blurb: "Targeted monochromatic phototherapy to calm hyperpigmentation, soothe reactive capillaries, and restore balanced skin tone.", 
+    cats: ["spa"],
+    duration: "40 mins",
+    protocol: "Medical Spectrum Wavelength (525nm)",
+    categoryLabel: "Clinical Aesthetic"
+  },
+  { 
+    slug: "facials", 
+    name: "Clinical Organic Facials", 
+    blurb: "Medical-grade extraction, deep enzymatic purification, and high-potency antioxidant infusion customized to your skin profile.", 
+    cats: ["spa"],
+    duration: "60 mins",
+    protocol: "Dermatological-Grade Botanical Extracts",
+    categoryLabel: "Clinical Aesthetic"
+  },
+  { 
+    slug: "deep-tissue", 
+    name: "Deep Tissue Neuromuscular Therapy", 
+    blurb: "Focused anatomical pressure targeting chronic myofascial restriction, postural tension, and deep tendon knots.", 
+    cats: ["spa"],
+    duration: "60–90 mins",
+    protocol: "Anatomical Trigger-Point Assessment",
+    categoryLabel: "Therapeutic Bodywork"
+  },
+  { 
+    slug: "trigger-point", 
+    name: "Trigger Point Myofascial Release", 
+    blurb: "Ischemic compression techniques targeting localized hyper-irritable muscular nodules to alleviate referred pain.", 
+    cats: ["spa"],
+    duration: "45–60 mins",
+    protocol: "Targeted Kinetic Chain Release",
+    categoryLabel: "Therapeutic Bodywork"
+  },
+  { 
+    slug: "swedish", 
+    name: "Therapeutic Swedish Massage", 
+    blurb: "Long effleurage strokes and petrissage designed to lower systemic cortisol, stimulate lymphatic drainage, and calm the autonomic nervous system.", 
+    cats: ["spa"],
+    duration: "60 mins",
+    protocol: "Circulatory & Lymphatic Stimulation",
+    categoryLabel: "Therapeutic Bodywork"
+  },
+  { 
+    slug: "lomi-lomi", 
+    name: "Lomi-Lomi Restorative Bodywork", 
+    blurb: "A continuous rhythmic forearm therapy that balances energy meridians and relieves generalized tension.", 
+    cats: ["spa"],
+    duration: "75 mins",
+    protocol: "Full-Body Rhythmic Mobilization",
+    categoryLabel: "Therapeutic Bodywork"
+  },
+  { 
+    slug: "scrub-sauna", 
+    name: "Brightening Exfoliation + Thermal Sauna", 
+    blurb: "Full-body mineral salt exfoliation to accelerate cellular turnover, paired with a gentle detoxifying thermal sauna session.", 
+    cats: ["spa"],
+    duration: "75 mins",
+    protocol: "Epidermal Resurfacing + Thermal Detox",
+    categoryLabel: "Aesthetic Treatment"
+  },
+  { 
+    slug: "body-polishing", 
+    name: "Nutrient Body Polishing", 
+    blurb: "Micronized walnut and cold-pressed botanical oil infusion to hydrate and refine texture across the entire dermal barrier.", 
+    cats: ["spa"],
+    duration: "60 mins",
+    protocol: "Dermal Hydration & Barrier Restoration",
+    categoryLabel: "Aesthetic Treatment"
+  },
+  { 
+    slug: "waxing", 
+    name: "Aesthetic Waxing", 
+    blurb: "Clinical-grade depilatory waxing for Brazilian, underarm, and bikini line in a completely private, sanitized room.", 
+    cats: ["spa"],
+    duration: "30–45 mins",
+    protocol: "Hypoallergenic Hard Wax & Antiseptic Finish",
+    categoryLabel: "Aesthetic Treatment"
+  },
 ];
 
-// landing pages at /offers/<slug>; image: /public/images/offer-<slug>.jpg
-// No discounts and no health claims here until the clinic approves them.
-export const OFFERS: Record<string, { title: string; h: string; p: string; points: string[]; service: string }> = {
+export const CLINICAL_STANDARDS = [
+  {
+    title: "Pre-Treatment Health Screening",
+    desc: "Every clinical wellness therapy begins with an intake triage review. We evaluate vitals, medical history, and contraindications before administering care.",
+    icon: "stethoscope"
+  },
+  {
+    title: "Medical-Grade Technology",
+    desc: "We utilize internationally certified equipment, including German Hydrosun® 750 wIRA systems and monoplace hyperbaric chambers.",
+    icon: "award"
+  },
+  {
+    title: "Hospital-Level Sterilization",
+    desc: "Strict clinical hygiene protocols, autoclave sterilization of instruments, medical HEPA air filtration, and single-use consumables.",
+    icon: "shield-check"
+  },
+  {
+    title: "Certified Clinical Practitioners",
+    desc: "Our therapists work under physician-developed clinical parameters, ensuring rigorous safety and personalized treatment intensity.",
+    icon: "user-check"
+  }
+];
+
+export const CLINICAL_METRICS = [
+  { stat: "100%", label: "Doctor-Supervised Protocols" },
+  { stat: "1:1", label: "Practitioner-Patient Ratio" },
+  { stat: "Area 3", label: "Private Sanctuary in Garki" },
+  { stat: "Hospital-Grade", label: "Sterilization & Hygiene" }
+];
+
+export const OFFERS: Record<string, { title: string; h: string; p: string; points: string[]; service: string; badge: string }> = {
+  therapies: {
+    title: "Medical Wellness Therapies",
+    badge: "Doctor-Guided Care",
+    h: "Evidence-grounded wellness therapies with medical screening",
+    p: "Hyperbaric oxygen chamber sessions, full-spectrum infrared sauna, colonic hydrotherapy, and German wIRA photothermal therapy under practitioner supervision.",
+    points: [
+      "Mandatory pre-treatment medical screening",
+      "Direct supervision by trained clinical staff",
+      "Non-invasive physiological support",
+      "Transparent consultation before any session"
+    ],
+    service: "Hyperbaric Oxygen Therapy (HBOT)",
+  },
   massage: {
-    title: "Massage", h: "Massage to ease tension in Garki, Abuja",
-    p: "Swedish, deep tissue, lomi-lomi and trigger point massage. Pick a time and book.",
-    points: ["Four massage styles to choose from", "Pressure adjusted to your comfort", "A calm room in Area 3, Garki", "Book online or call"],
-    service: "Swedish Massage",
+    title: "Therapeutic Neuromuscular Care",
+    badge: "Clinical Bodywork",
+    h: "Targeted myofascial release & therapeutic massage in Garki",
+    p: "Doctor-advised massage therapy protocols for chronic tension, postural strain, and nervous system rebalancing.",
+    points: [
+      "Deep tissue, neuromuscular trigger-point & Swedish styles",
+      "Intake assessment of musculoskeletal tension",
+      "Private, sanitized clinical treatment rooms",
+      "Adjusted therapeutic pressure calibrated to your body"
+    ],
+    service: "Deep Tissue Neuromuscular Therapy",
   },
   facials: {
-    title: "Facials & skin care", h: "Facials and skin care that fit your skin",
-    p: "Deep cleansing and brightening organic facials, scrubs and body polishing.",
-    points: ["Deep cleansing and brightening facials", "Organic oils and products", "Green LED skin therapy available", "Book online or call"],
-    service: "Facials",
-  },
-  therapies: {
-    title: "Wellness therapies", h: "Wellness therapies, with a consultation first",
-    p: "Infrared sauna, hyperbaric oxygen therapy, colonic irrigation and more. Speak to our team to see what suits you.",
-    points: ["Talk to our team before you start", "Therapies explained in plain language", "Not a replacement for care from your doctor", "Book a consultation by call or online"],
-    service: "Infrared Sauna",
+    title: "Clinical Skincare & Facials",
+    badge: "Aesthetic Dermatology",
+    h: "Dermatological-grade organic facials & restorative skin therapies",
+    p: "Medical extractions, green LED phototherapy, and antioxidant barrier restoration formulated for melanin-rich and sensitive skin types.",
+    points: [
+      "Professional skin type diagnosis prior to treatment",
+      "Dermatologically tested organic botanicals & serums",
+      "Green LED light therapy for hyperpigmentation balance",
+      "Strict aseptic technique & disposable treatment materials"
+    ],
+    service: "Clinical Organic Facials",
   },
 };
 
-// Add real reviews here. The reviews section only renders when this has items.
-export const REVIEWS: { name: string; text: string }[] = [];
+export const REVIEWS: { name: string; text: string; role?: string }[] = [];

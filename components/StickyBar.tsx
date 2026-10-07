@@ -1,14 +1,31 @@
 import Link from "next/link";
 import { SITE } from "@/lib/site";
 
-// Mobile-only action bar: the fastest route to a call or booking.
 export default function StickyBar() {
-  const c = "py-3 text-center font-medium";
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-3 divide-x divide-cream/20 border-t border-orange bg-ink pb-[env(safe-area-inset-bottom)] text-cream md:hidden">
-      <a href={`tel:${SITE.phones[0].tel}`} className={c}>Call</a>
-      <a href={SITE.wa} target="_blank" rel="noopener noreferrer" className={c}>WhatsApp</a>
-      <Link href="/book" className={`${c} bg-orange text-ink`}>Book</Link>
+    <div className="fixed inset-x-0 bottom-0 z-50 flex items-center justify-between border-t border-line bg-white/95 px-4 py-2.5 pb-[calc(0.6rem+env(safe-area-inset-bottom))] shadow-lg backdrop-blur-md md:hidden">
+      <div className="flex items-center gap-2">
+        <a
+          href={`tel:${SITE.phones[0].tel}`}
+          className="inline-flex items-center justify-center rounded-xl border border-line bg-cream px-3 py-2 text-xs font-semibold text-ink transition active:scale-95"
+        >
+          📞 Call
+        </a>
+        <a
+          href={SITE.wa}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center rounded-xl border border-line bg-cream px-3 py-2 text-xs font-semibold text-green transition active:scale-95"
+        >
+          💬 WhatsApp
+        </a>
+      </div>
+      <Link
+        href="/book"
+        className="inline-flex items-center justify-center rounded-xl bg-green px-5 py-2 text-xs font-bold text-white shadow-xs transition active:scale-95 hover:bg-leaf"
+      >
+        Book Consultation
+      </Link>
     </div>
   );
 }

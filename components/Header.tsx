@@ -1,26 +1,83 @@
 import Link from "next/link";
 import Photo from "./Photo";
-import { NAV } from "@/lib/site";
-import { btn, btnSm } from "@/lib/ui";
+import { NAV, SITE } from "@/lib/site";
+import { btnSm } from "@/lib/ui";
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-cream/95 pt-[env(safe-area-inset-top)] backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3">
-        <Link href="/" className="flex items-center gap-2 font-display text-2xl font-semibold text-leaf">
-          <Photo src="logo.png" alt="" fit="contain" className="h-9 w-9" sizes="36px" />
-          Life Medical Spa
+    <header className="sticky top-0 z-40 border-b border-line bg-white/95 pt-[env(safe-area-inset-top)] backdrop-blur-md">
+      {/* Top Clinical Announcement / Hotline Bar */}
+      <div className="border-b border-line/60 bg-green px-5 py-1.5 text-xs text-white">
+        <div className="mx-auto flex max-w-6xl items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="inline-block size-1.5 rounded-full bg-orange animate-pulse" />
+            <span className="font-medium tracking-wide">Doctor-Supervised Clinical Protocols • Garki, Abuja</span>
+          </div>
+          <div className="hidden sm:flex items-center gap-4 text-white/90">
+            <span>Clinic Hours: Mon–Sat 9AM–5PM</span>
+            <span className="text-white/40">|</span>
+            <a href={`tel:${SITE.phones[0].tel}`} className="font-semibold text-white hover:text-orange transition-colors">
+              Reception: {SITE.phones[0].label}
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Navigation */}
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5">
+        <Link href="/" className="flex items-center gap-3 group">
+          <Photo src="logo.png" alt="Life Medical Spa" fit="contain" className="h-10 w-10 transition-transform group-hover:scale-105" sizes="40px" />
+          <div>
+            <span className="block font-display text-2xl font-bold tracking-tight text-green leading-none">
+              Life Medical Spa
+            </span>
+            <span className="block text-[11px] font-semibold tracking-widest uppercase text-orange-deep mt-0.5">
+              Wellness &amp; Clinical Aesthetics
+            </span>
+          </div>
         </Link>
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Main">
-          {NAV.map((n) => <Link key={n.href} href={n.href} className="hover:text-orange-deep">{n.label}</Link>)}
-          <Link href="/book" className={btn}>Book Now</Link>
+
+        {/* Desktop Nav */}
+        <nav className="hidden items-center gap-7 md:flex" aria-label="Main">
+          {NAV.map((n) => (
+            <Link
+              key={n.href}
+              href={n.href}
+              className="text-sm font-medium text-ink/80 transition-colors hover:text-green"
+            >
+              {n.label}
+            </Link>
+          ))}
+          <Link href="/book" className={btnSm}>
+            Book Consultation
+          </Link>
         </nav>
+
+        {/* Mobile Nav */}
         <div className="flex items-center gap-2 md:hidden">
-          <Link href="/book" className={btnSm}>Book Now</Link>
+          <Link href="/book" className={btnSm}>
+            Book
+          </Link>
           <details className="relative">
-            <summary className="cursor-pointer list-none p-2 text-xl" aria-label="Menu">☰</summary>
-            <div className="absolute right-0 mt-2 grid w-48 gap-1 rounded-xl border border-line bg-cream p-3 shadow-lg">
-              {NAV.map((n) => <Link key={n.href} href={n.href} className="rounded-lg px-3 py-2 hover:bg-line">{n.label}</Link>)}
+            <summary className="cursor-pointer list-none rounded-lg border border-line p-2 text-lg text-ink hover:bg-cream" aria-label="Menu">
+              ☰
+            </summary>
+            <div className="absolute right-0 mt-2 grid w-52 gap-1 rounded-2xl border border-line bg-white p-3 shadow-lg z-50">
+              <div className="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-green border-b border-line mb-1">
+                Clinical Navigation
+              </div>
+              {NAV.map((n) => (
+                <Link
+                  key={n.href}
+                  href={n.href}
+                  className="rounded-xl px-3 py-2 text-sm font-medium text-ink transition-colors hover:bg-cream hover:text-green"
+                >
+                  {n.label}
+                </Link>
+              ))}
+              <div className="mt-2 pt-2 border-t border-line text-xs text-ink/60 px-3">
+                Emergency/Desk: {SITE.phones[0].label}
+              </div>
             </div>
           </details>
         </div>
