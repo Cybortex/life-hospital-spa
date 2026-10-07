@@ -11,10 +11,6 @@ export default function Footer() {
           <p className="font-display text-2xl font-bold tracking-tight text-white">{SITE.name}</p>
           <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-orange">{SITE.tagline}</p>
           <p className="mt-3 text-xs text-cream/80 leading-relaxed">{SITE.address}</p>
-          <div className="mt-4 inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] text-white">
-            <span className="size-1.5 rounded-full bg-orange" />
-            <span>Doctor-Supervised Facility</span>
-          </div>
         </div>
 
         {/* Col 2: Navigation */}

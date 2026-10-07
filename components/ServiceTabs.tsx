@@ -14,7 +14,7 @@ export default function ServiceTabs({ initial = "all" }: { initial?: string }) {
       {/* Tab Selectors */}
       <div role="tablist" aria-label="Service category" className="flex flex-wrap gap-2.5 border-b border-line pb-4">
         {CATS.map((c) => {
-          const count = c.id === "all" ? SERVICES.length : SERVICES.filter((s) => s.cats.includes(c.id)).length;
+          const count = c.id === "all" ? SERVICES.length : SERVICES.filter((s) => s.cats.includes(c.id as Cat)).length;
           const isActive = tab === c.id;
           return (
             <button

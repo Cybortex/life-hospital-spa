@@ -2,7 +2,7 @@ import Link from "next/link";
 import Photo from "@/components/Photo";
 import Divider from "@/components/Divider";
 import { CLINICAL_METRICS, CLINICAL_STANDARDS, DISCLAIMER, HOURS, OFFERS, REVIEWS, SERVICES, SITE } from "@/lib/site";
-import { btn, btnDark, btnLine, btnSm, card, wrap } from "@/lib/ui";
+import { btn, btnDark, btnGold, btnLine, btnLineLight, btnSm, card, wrap } from "@/lib/ui";
 
 const clinicalGroups = [
   {
@@ -39,10 +39,10 @@ export default function Home() {
             </p>
             
             <div className="mt-8 flex flex-wrap items-center gap-3.5">
-              <Link href="/book" className={`${btn} !bg-orange !text-ink hover:!bg-white font-bold`}>
+              <Link href="/book" className={btnGold}>
                 Book Clinical Consultation
               </Link>
-              <Link href="/services" className={btnLine + " !bg-white/10 !text-white !border-white/30 hover:!bg-white/20"}>
+              <Link href="/services" className={btnLineLight}>
                 View Clinical Directory
               </Link>
               <a href={`tel:${SITE.phones[0].tel}`} className="text-xs font-semibold text-cream hover:text-white underline underline-offset-4 ml-1">
@@ -253,10 +253,10 @@ export default function Home() {
               {DISCLAIMER}
             </div>
             <div className="mt-7 flex flex-wrap gap-3">
-              <Link href="/offers/therapies" className={`${btn} !bg-orange !text-ink hover:!bg-white font-bold`}>
+              <Link href="/offers/therapies" className={btnGold}>
                 Book a Therapy Consultation
               </Link>
-              <Link href="/services?cat=therapy" className={btnLine + " !text-white !border-white/30 hover:!bg-white/10"}>
+              <Link href="/services?cat=therapy" className={btnLineLight}>
                 View Therapy Specifications
               </Link>
             </div>
@@ -329,10 +329,10 @@ export default function Home() {
             Schedule your personalized consultation with our clinical wellness team in Garki, Abuja today.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Link href="/book" className={`${btn} !bg-orange !text-ink hover:!bg-white font-bold`}>
+            <Link href="/book" className={btnGold}>
               Schedule Your Consultation
             </Link>
-            <a href={`tel:${SITE.phones[0].tel}`} className={btnLine + " !text-white !border-white/30 hover:!bg-white/10"}>
+            <a href={`tel:${SITE.phones[0].tel}`} className={btnLineLight}>
               Call {SITE.phones[0].label}
             </a>
           </div>
