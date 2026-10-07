@@ -22,16 +22,16 @@ export default function ServiceTabs({ initial = "all" }: { initial?: string }) {
               role="tab"
               aria-selected={isActive}
               onClick={() => setTab(c.id)}
-              className={`inline-flex items-center gap-2 rounded-xl border px-4 py-2.5 text-xs font-semibold transition-all ${
+              className={`inline-flex items-center gap-2 rounded-xl border-2 px-4 py-2.5 text-xs font-bold transition-all ${
                 isActive
                   ? "border-green bg-green text-white shadow-xs"
-                  : "border-line bg-white text-ink/80 hover:border-leaf hover:bg-cream"
+                  : "border-green/25 bg-white text-green hover:border-green hover:bg-green/5"
               }`}
             >
               <span>{c.label}</span>
               <span
                 className={`rounded-full px-2 py-0.5 text-[10px] font-bold ${
-                  isActive ? "bg-white/20 text-white" : "bg-cream text-ink/60"
+                  isActive ? "bg-white/20 text-white" : "bg-green/10 text-green"
                 }`}
               >
                 {count}
@@ -42,7 +42,7 @@ export default function ServiceTabs({ initial = "all" }: { initial?: string }) {
       </div>
 
       {/* Category Overview */}
-      <p className="mt-4 text-xs font-medium text-ink/60">
+      <p className="mt-4 text-xs font-medium text-ink/70">
         {CATS.find((c) => c.id === tab)?.desc}
       </p>
 
@@ -70,7 +70,7 @@ export default function ServiceTabs({ initial = "all" }: { initial?: string }) {
                     Pre-Screening Required
                   </span>
                 )}
-                <span className="text-xs text-ink/50 ml-auto font-medium">
+                <span className="text-xs text-ink/70 ml-auto font-semibold">
                   Duration: {s.duration}
                 </span>
               </div>
@@ -79,7 +79,7 @@ export default function ServiceTabs({ initial = "all" }: { initial?: string }) {
                 {s.name}
               </h2>
 
-              <p className="mt-1 text-xs text-ink/75 leading-relaxed">
+              <p className="mt-1 text-xs text-ink/80 leading-relaxed">
                 {s.blurb}
               </p>
 

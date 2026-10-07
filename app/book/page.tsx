@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import BookingForm from "@/components/BookingForm";
 import { DISCLAIMER, SITE } from "@/lib/site";
-import { badge, card, wrap } from "@/lib/ui";
+import { card, wrap } from "@/lib/ui";
 
 export const metadata: Metadata = {
   title: "Schedule Consultation & Appointments",
@@ -14,11 +14,10 @@ export default async function Book({ searchParams }: { searchParams: Promise<{ s
   return (
     <section className={`${wrap} py-14`}>
       <div className="max-w-3xl">
-        <span className={badge}>Clinical Appointments</span>
-        <h1 className="rule mt-2 font-display text-4xl font-semibold md:text-5xl">
+        <h1 className="rule font-display text-4xl font-semibold md:text-5xl">
           Schedule Your Consultation
         </h1>
-        <p className="mt-3 text-base text-ink/80 leading-relaxed">
+        <p className="mt-4 text-base text-ink/80 leading-relaxed">
           Book your initial wellness assessment or reserve a direct therapy slot. Our reception team will confirm your appointment details directly on WhatsApp.
         </p>
       </div>

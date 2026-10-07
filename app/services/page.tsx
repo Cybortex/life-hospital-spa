@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import ServiceTabs from "@/components/ServiceTabs";
-import { wrap, badge } from "@/lib/ui";
+import { wrap } from "@/lib/ui";
 import { DISCLAIMER } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -14,8 +14,7 @@ export default async function Services({ searchParams }: { searchParams: Promise
   return (
     <section className={`${wrap} py-14`}>
       <div className="max-w-3xl">
-        <span className={badge}>Treatment Directory</span>
-        <h1 className="rule mt-2 font-display text-4xl font-semibold md:text-5xl">
+        <h1 className="rule font-display text-4xl font-semibold md:text-5xl">
           Clinical Therapies &amp; Aesthetic Care
         </h1>
         <p className="mt-4 text-base text-ink/80 leading-relaxed">

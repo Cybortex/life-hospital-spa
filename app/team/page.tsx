@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Photo from "@/components/Photo";
-import { badge, btn, card, wrap } from "@/lib/ui";
+import { btn, card, wrap } from "@/lib/ui";
 
 export const metadata: Metadata = {
   title: "Clinical & Aesthetic Practitioners",
@@ -31,8 +31,7 @@ export default function Team() {
   return (
     <section className={`${wrap} py-14`}>
       <div className="max-w-3xl">
-        <span className={badge}>Practitioner Team</span>
-        <h1 className="rule mt-2 font-display text-4xl font-semibold md:text-5xl">
+        <h1 className="rule font-display text-4xl font-semibold md:text-5xl">
           Multidisciplinary Clinical Care Team
         </h1>
         <p className="mt-4 text-base text-ink/80 leading-relaxed">

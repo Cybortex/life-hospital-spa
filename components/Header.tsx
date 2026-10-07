@@ -6,25 +6,7 @@ import { btnSm } from "@/lib/ui";
 export default function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-white/95 pt-[env(safe-area-inset-top)] backdrop-blur-md">
-      {/* Top Clinical Announcement / Hotline Bar */}
-      <div className="border-b border-line/60 bg-green px-5 py-1.5 text-xs text-white">
-        <div className="mx-auto flex max-w-6xl items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="inline-block size-1.5 rounded-full bg-orange animate-pulse" />
-            <span className="font-medium tracking-wide">Doctor-Supervised Clinical Protocols • Garki, Abuja</span>
-          </div>
-          <div className="hidden sm:flex items-center gap-4 text-white/90">
-            <span>Clinic Hours: Mon–Sat 9AM–5PM</span>
-            <span className="text-white/40">|</span>
-            <a href={`tel:${SITE.phones[0].tel}`} className="font-semibold text-white hover:text-orange transition-colors">
-              Reception: {SITE.phones[0].label}
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Navigation */}
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
         <Link href="/" className="flex items-center gap-3 group">
           <Photo src="logo.png" alt="Life Medical Spa" fit="contain" className="h-10 w-10 transition-transform group-hover:scale-105" sizes="40px" />
           <div>
@@ -43,7 +25,7 @@ export default function Header() {
             <Link
               key={n.href}
               href={n.href}
-              className="text-sm font-medium text-ink/80 transition-colors hover:text-green"
+              className="text-sm font-semibold text-ink transition-colors hover:text-green"
             >
               {n.label}
             </Link>
@@ -63,9 +45,6 @@ export default function Header() {
               ☰
             </summary>
             <div className="absolute right-0 mt-2 grid w-52 gap-1 rounded-2xl border border-line bg-white p-3 shadow-lg z-50">
-              <div className="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-green border-b border-line mb-1">
-                Clinical Navigation
-              </div>
               {NAV.map((n) => (
                 <Link
                   key={n.href}
@@ -75,8 +54,8 @@ export default function Header() {
                   {n.label}
                 </Link>
               ))}
-              <div className="mt-2 pt-2 border-t border-line text-xs text-ink/60 px-3">
-                Emergency/Desk: {SITE.phones[0].label}
+              <div className="mt-2 pt-2 border-t border-line text-xs font-semibold text-green px-3">
+                Desk: {SITE.phones[0].label}
               </div>
             </div>
           </details>

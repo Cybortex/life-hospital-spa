@@ -50,27 +50,35 @@ Please confirm availability. Thank you.`;
           <button
             type="button"
             onClick={() => setConsultType("consultation")}
-            className={`rounded-xl border p-3 text-left transition-all ${
+            className={`rounded-xl border-2 p-3.5 text-left transition-all ${
               consultType === "consultation"
-                ? "border-green bg-green/5 text-green ring-1 ring-green"
-                : "border-line bg-white text-ink/70 hover:border-leaf"
+                ? "border-green bg-green text-white shadow-xs"
+                : "border-green/30 bg-white text-green hover:border-green hover:bg-green/5"
             }`}
           >
-            <span className="block text-xs font-bold">Clinical Consultation</span>
-            <span className="block text-[11px] text-ink/60 mt-0.5">Doctor triage &amp; custom therapy plan</span>
+            <span className={`block text-xs font-bold ${consultType === "consultation" ? "text-white" : "text-green"}`}>
+              Clinical Consultation
+            </span>
+            <span className={`block text-[11px] mt-0.5 ${consultType === "consultation" ? "text-white/90" : "text-ink/80"}`}>
+              Doctor triage &amp; custom plan
+            </span>
           </button>
 
           <button
             type="button"
             onClick={() => setConsultType("treatment")}
-            className={`rounded-xl border p-3 text-left transition-all ${
+            className={`rounded-xl border-2 p-3.5 text-left transition-all ${
               consultType === "treatment"
-                ? "border-green bg-green/5 text-green ring-1 ring-green"
-                : "border-line bg-white text-ink/70 hover:border-leaf"
+                ? "border-green bg-green text-white shadow-xs"
+                : "border-green/30 bg-white text-green hover:border-green hover:bg-green/5"
             }`}
           >
-            <span className="block text-xs font-bold">Specific Treatment</span>
-            <span className="block text-[11px] text-ink/60 mt-0.5">Direct therapy protocol selection</span>
+            <span className={`block text-xs font-bold ${consultType === "treatment" ? "text-white" : "text-green"}`}>
+              Specific Treatment
+            </span>
+            <span className={`block text-[11px] mt-0.5 ${consultType === "treatment" ? "text-white/90" : "text-ink/80"}`}>
+              Direct therapy protocol
+            </span>
           </button>
         </div>
       </div>
@@ -117,7 +125,7 @@ Please confirm availability. Thank you.`;
           className={field}
         />
         {sunday && (
-          <p className="mt-1.5 text-xs font-medium text-orange-deep">
+          <p className="mt-1.5 text-xs font-bold text-orange-deep">
             Notice: Sundays are reserved for facility-wide medical disinfection and autoclave sterilization. Please select Monday to Saturday.
           </p>
         )}
@@ -138,10 +146,10 @@ Please confirm availability. Thank you.`;
                 setTime(t);
                 setErr("");
               }}
-              className={`rounded-xl border py-2.5 text-xs font-semibold transition-all ${
+              className={`rounded-xl border-2 py-2.5 text-xs font-bold transition-all ${
                 time === t
                   ? "border-green bg-green text-white shadow-xs"
-                  : "border-line bg-white text-ink hover:border-leaf hover:bg-cream"
+                  : "border-green/25 bg-white text-green hover:border-green hover:bg-green/5"
               }`}
             >
               {t}
@@ -182,7 +190,7 @@ Please confirm availability. Thank you.`;
       {/* Health Notes */}
       <div>
         <label className="text-xs font-bold uppercase tracking-wider text-green">
-          Health Notes or Therapy Focus <span className="font-normal text-ink/50">(Optional)</span>
+          Health Notes or Therapy Focus <span className="font-normal text-ink/60">(Optional)</span>
         </label>
         <textarea
           name="notes"
@@ -197,13 +205,13 @@ Please confirm availability. Thank you.`;
         <button className={`${btn} w-full py-3.5 !bg-green hover:!bg-leaf font-bold text-white`}>
           Confirm Appointment Request on WhatsApp
         </button>
-        <p role="status" className="mt-2 text-center text-xs text-ink/65 min-h-5">
+        <p role="status" className="mt-2 text-center text-xs text-ink/75 font-medium min-h-5">
           {err || "Transfers your intake details securely to clinic reception on WhatsApp for final scheduling."}
         </p>
       </div>
 
-      <div className="rounded-xl border border-line bg-cream/60 p-3 text-[11px] text-ink/70">
-        🔒 <strong className="text-green">Patient Confidentiality Guarantee:</strong> Your health details and consultation notes remain strictly confidential between you and the clinical care team.
+      <div className="rounded-xl border border-line bg-cream/60 p-3 text-[11px] text-ink/80">
+        🔒 <strong className="text-green font-bold">Patient Confidentiality Guarantee:</strong> Your health details and consultation notes remain strictly confidential between you and the clinical care team.
       </div>
     </form>
   );

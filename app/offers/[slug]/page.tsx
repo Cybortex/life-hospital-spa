@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Photo from "@/components/Photo";
 import { DISCLAIMER, OFFERS, SITE } from "@/lib/site";
-import { badge, btn, btnLine, card } from "@/lib/ui";
+import { btn, btnLine, card } from "@/lib/ui";
 
 export function generateStaticParams() {
   return Object.keys(OFFERS).map((slug) => ({ slug }));
@@ -21,13 +21,7 @@ export default async function Offer({ params }: { params: Promise<{ slug: string
 
   return (
     <article className="mx-auto max-w-4xl px-5 py-14">
-      {/* Header Eyebrow */}
-      <div className="flex items-center gap-2">
-        <span className={badge}>{o.badge}</span>
-        <span className="text-xs text-ink/50">Clinical Treatment Pathway</span>
-      </div>
-
-      <h1 className="rule mt-3 font-display text-4xl leading-tight font-semibold md:text-5xl text-ink">
+      <h1 className="rule font-display text-4xl leading-tight font-semibold md:text-5xl text-ink">
         {o.h}
       </h1>
 
@@ -71,14 +65,11 @@ export default async function Offer({ params }: { params: Promise<{ slug: string
 
         <div className="md:col-span-5 space-y-5">
           <div className={`${card} p-6`}>
-            <h3 className="text-xs font-bold uppercase tracking-wider text-green">
-              Ready to Proceed?
-            </h3>
-            <p className="mt-1 font-display text-xl font-semibold text-ink">
+            <h3 className="font-display text-xl font-semibold text-ink">
               Reserve Your Session
-            </p>
+            </h3>
             <p className="mt-2 text-xs text-ink/70">
-              Assigned protocol: <strong className="text-ink">{o.service}</strong>. Triage and intake screening completed on arrival.
+              Assigned protocol: <strong className="text-green">{o.service}</strong>. Triage and intake screening completed on arrival.
             </p>
 
             <div className="mt-5 flex flex-col gap-2.5">

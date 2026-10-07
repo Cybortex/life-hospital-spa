@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Photo from "@/components/Photo";
 import { HOURS, SITE } from "@/lib/site";
-import { badge, btn, btnDark, btnLine, card, wrap } from "@/lib/ui";
+import { btn, btnDark, btnLine, card, wrap } from "@/lib/ui";
 
 export const metadata: Metadata = {
   title: "Clinical Reception & Contact",
@@ -13,8 +13,7 @@ export default function Contact() {
   return (
     <section className={`${wrap} py-14`}>
       <div className="max-w-3xl">
-        <span className={badge}>Clinic Navigation</span>
-        <h1 className="rule mt-2 font-display text-4xl font-semibold md:text-5xl">
+        <h1 className="rule font-display text-4xl font-semibold md:text-5xl">
           Clinical Reception &amp; Location
         </h1>
         <p className="mt-4 text-base text-ink/80 leading-relaxed">
@@ -43,14 +42,14 @@ export default function Contact() {
         {/* Left Column: Facility Details */}
         <div className={`${card} p-7 flex flex-col justify-between`}>
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-green">Sanctuary Address</span>
-            <h2 className="mt-1 font-display text-2xl font-semibold text-ink">{SITE.address}</h2>
-            <p className="mt-2 text-xs text-ink/70">
+            <h2 className="font-display text-2xl font-semibold text-ink">Sanctuary Address</h2>
+            <p className="mt-2 text-sm font-semibold text-green">{SITE.address}</p>
+            <p className="mt-1 text-xs text-ink/70">
               Area 3, Garki, Federal Capital Territory, Abuja. Discrete ground-floor reception with designated patient parking.
             </p>
 
             <div className="mt-6">
-              <span className="text-xs font-bold uppercase tracking-wider text-green">Clinical Hours</span>
+              <h3 className="font-display text-xl font-semibold text-green">Clinical Hours</h3>
               <dl className="mt-2.5 grid gap-2">
                 {HOURS.map(([d, h]) => (
                   <div key={d} className="flex justify-between items-center border-b border-line pb-2 text-xs">
@@ -84,8 +83,7 @@ export default function Contact() {
         {/* Right Column: Embedded Map */}
         <div className={`${card} p-7 flex flex-col justify-between`}>
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-green">Interactive Map</span>
-            <h2 className="mt-1 font-display text-2xl font-semibold text-ink">Find Us in Area 3, Garki</h2>
+            <h2 className="font-display text-2xl font-semibold text-ink">Find Us in Area 3, Garki</h2>
             <p className="mt-2 text-xs text-ink/70">
               Easily accessible from Central Business District, Wuse, and Asokoro.
             </p>
